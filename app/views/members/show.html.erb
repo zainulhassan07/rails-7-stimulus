@@ -1,0 +1,19 @@
+<div class="card text-center mt-5">
+  <%= render 'member_personal_details', user: @user%>
+  <div class="card mt-4">
+    <div class="card-header">About</div>
+      <div class="card-body">
+      <%if user_signed_in? && @user == current_user%>
+        <div class="d-flex justify-content-end"> 
+          <%= link_to edit_member_description_path, data: {controller: "edit-user-description"} do %>
+            <i class="bi bi-pencil-fill"></i>
+          <%end%>
+        </div>
+      <%end%>   
+        <blockquote class="blockquote mb-0">
+        <%= render 'member_description', user: @user%>
+        </blockquote>
+      </div>
+    </div> 
+  </div>       
+</div>

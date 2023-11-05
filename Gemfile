@@ -74,5 +74,5 @@ gem 'faker'
 gem 'ransack'
 gem 'devise'
 gem 'kaminari'
-gem 'cssbundling-rails'
+# gem 'cssbundling-rails'
 gem 'dotenv-rails', groups: [:development, :test]

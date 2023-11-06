@@ -76,3 +76,4 @@ gem 'devise'
 gem 'kaminari'
 # gem 'cssbundling-rails'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'pry-rails'

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable
 
   
+  has_many :work_experiences       
   PROFILE_TITLE = [
     'senior Ruby on Rails developer',
     'Senior Full stack Ruby on Rails developer',

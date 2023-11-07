@@ -1,0 +1,67 @@
+<%= form_with model: @work_experience do |form|%>
+  <div class="modal-body">
+  <% if @work_experience.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@work_experience.errors.count, "error") %> prohibited this work experience from being saved:</h4>
+      <ul>
+        <% @work_experience.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :job_title %>
+    <%= form.text_field :job_title, class: 'form-control' %>
+  </div>
+
+   <div class="form-group">
+    <%= form.label :employment_type %>
+    <%= form.select :employment_type, options_for_select(WorkExperience::EMPLOYMENT_TYPE), { include_blank: 'Select Employment Type' }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :location_type %>
+    <%= form.select :location_type, options_for_select(WorkExperience::LOCATION_TYPE), { include_blank: 'Select Location Type' }, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :location %>
+    <%= form.text_field :location, class: 'form-control' %>
+  </div>
+
+
+  <div class="form-check form-switch">
+    <%= form.label :current_working_here, class: 'form-check-label' do %>
+      <%= form.check_box :current_working_here, class: 'form-check-input', role: "switch" %>
+      Current Working Here
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control', rows: 5 %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :company %>
+    <%= form.text_field :company, class: 'form-control' %>
+  </div>
+  </div>
+
+  <div class="modal-footer">
+      <%= form.submit 'Save Changes', class: 'btn btn-primary', data: {action: 'click->bs-modal#submitEnd'}%>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  </div>
+
+<%end%>

@@ -1,19 +1,57 @@
-<div class="card text-center mt-5">
-  <%= render 'member_personal_details', user: @user%>
+<div class="container mt-5">
+  <div class="card text-center">
+    <%= render 'member_personal_details', user: @user %>
+  </div>
+
   <div class="card mt-4">
     <div class="card-header">About</div>
-      <div class="card-body">
-      <%if user_signed_in? && @user == current_user%>
-        <div class="d-flex justify-content-end"> 
-          <%= link_to edit_member_description_path, data: {controller: "edit-user-description"} do %>
+    <div class="card-body">
+      <% if user_signed_in? && @user == current_user %>
+        <div class="d-flex justify-content-end">
+          <%= link_to edit_member_description_path, data: { controller: "edit-user-description" } do %>
             <i class="bi bi-pencil-fill"></i>
-          <%end%>
+          <% end %>
         </div>
-      <%end%>   
-        <blockquote class="blockquote mb-0">
-        <%= render 'member_description', user: @user%>
-        </blockquote>
+      <% end %>
+      <blockquote class="blockquote mb-0">
+        <%= render 'member_description', user: @user %>
+      </blockquote>
+    </div>
+  </div>
+
+<div class="container mt-5">
+  <div class="card mt-4">
+    <div class="card-header">Work Experience</div>
+      <% if user_signed_in? && @user == current_user %>
+        <%= link_to new_work_experience_path, data: { controller: "bs-modal-form" } do %>
+          <i class="bi bi-plus"></i> Add Work Experience
+        <% end %>
+      <%end%>
+        <% if @user.work_experiences.present? %>
+          <div class="row">
+            <%= link_to "javascript:void(0)" do %>
+              <i class="bi bi-pencil-fill"></i> Edit Experiences
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    </div> 
-  </div>       
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <h4 class="card-title">Work Experiences</h4>
+      <% if @user.work_experiences.present? %>
+        <ul class="list-group mt-4" id="work_experience_items">
+          <% @user.work_experiences.each do |work_experience| %>
+            <%= render 'work_experiences/work_experience', work_experience: work_experience %>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No work experiences to display.</p>
+      <% end %>
+
+    </div>
+  </div>
+
 </div>

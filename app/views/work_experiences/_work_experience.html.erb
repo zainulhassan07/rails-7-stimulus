@@ -11,16 +11,17 @@
           <%= link_to edit_work_experience_path(work_experience), data: { controller: "bs-modal-form" } do %>
             <i class="bi bi-pencil-fill"></i> Edit
           <% end %>
+          <%= link_to work_experience_path(work_experience), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete it?" } do %>
+            <i class="bi bi-trash text-danger"></i> 
+          <% end %>
+
         </div>
       </div>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item"><strong>Employment Type:</strong> <%= work_experience.employment_type %></li>
-      <li class="list-group-item"><strong>Location:</strong> <%= work_experience.location %></li>
-      <li class="list-group-item"><strong>Location Type:</strong> <%= work_experience.location_type %></li>
-      <li class="list-group-item"><strong>Start Date:</strong> <%= work_experience.start_date %></li>
-      <li class="list-group-item"><strong>End Date:</strong> <%= work_experience.end_date %></li>
-      <li class="list-group-item"><strong>Current Working Here:</strong> <%= work_experience.current_working_here ? 'Yes' : 'No' %></li>
+      <li class="list-group-item"><%= work_experience.company_with_employment_type %></li>
+      <li class="list-group-item"><%= work_experience.job_location %></li>
+      <li class="list-group-item"><%= work_experience.job_duration %></li>
     </ul>
   </div>
 </div>

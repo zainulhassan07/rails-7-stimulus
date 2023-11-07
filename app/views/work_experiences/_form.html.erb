@@ -28,12 +28,12 @@
 
    <div class="form-group">
     <%= form.label :employment_type %>
-    <%= form.select :employment_type, options_for_select(WorkExperience::EMPLOYMENT_TYPE), { include_blank: 'Select Employment Type' }, class: 'form-control' %>
+    <%= form.select :employment_type, options_for_select(WorkExperience::EMPLOYMENT_TYPE, selected: form.object.employment_type), { include_blank: 'Select Employment Type' }, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label :location_type %>
-    <%= form.select :location_type, options_for_select(WorkExperience::LOCATION_TYPE), { include_blank: 'Select Location Type' }, class: 'form-control' %>
+    <%= form.select :location_type, options_for_select(WorkExperience::LOCATION_TYPE, selected: form.object.location_type), { include_blank: 'Select Location Type' }, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= form.label :location %>

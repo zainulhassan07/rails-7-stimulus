@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch 'update_personal_details', to: 'members#update_personal_details', as: 'update_member_personal_details'
   
   resources :work_experiences
+  resources :connections
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
 

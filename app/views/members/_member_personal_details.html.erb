@@ -11,13 +11,21 @@
           <i class="fas fa-quote-left pe-2"></i><%= user.profile_title%>
         </p>
         <p class="lead"><%= user.address%></p>
-            <%if user_signed_in? && user == current_user%>
-        <div class="d-flex justify-content-end"> 
-          <%= link_to edit_member_personal_details_path, data: {controller: "edit-user-details"} do %>
-            <i class="bi bi-pencil-fill"></i>
+        <div id="user-connection-status">
+          <% if user_signed_in? && current_user.check_if_already_connected?(current_user, user)%>
+          <%#= link_to "Connect", connections_path, class: 'btn btn-primary', data: { controller: "connections", turbo_method: :post, connections_target: "connection", requester_id: current_user.id, connection_id: user.id } %>
+          <%= link_to "Connect", connections_path, class: 'btn btn-primary', data: {controller: "connections", turbo_method: :post, connections_target: "connection", requester_id: current_user.id, connecter_id: user.id} %>
+
           <%end%>
         </div>
-      <%end%>   
+
+        <%if user_signed_in? && user == current_user%>
+          <div class="d-flex justify-content-end"> 
+            <%= link_to edit_member_personal_details_path, data: {controller: "edit-user-details"} do %>
+              <i class="bi bi-pencil-fill"></i>
+            <%end%>
+          </div>
+        <%end%>   
       </div>
     </div>
   </div>

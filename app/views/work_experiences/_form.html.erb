@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="form-check form-switch">
+    <%= form.check_box :current_working_here, class: 'form-check-input', role: "switch", data: {controller: "disable-end-date"} %>
+    <label class="form-check-label" for="work_experience_current_working_here">I am currently Working Here</label>
+  </div>
 
   <div class="form-group">
     <%= form.label :start_date %>
@@ -38,14 +43,6 @@
   <div class="form-group">
     <%= form.label :location %>
     <%= form.text_field :location, class: 'form-control' %>
-  </div>
-
-
-  <div class="form-check form-switch">
-    <%= form.label :current_working_here, class: 'form-check-label' do %>
-      <%= form.check_box :current_working_here, class: 'form-check-input', role: "switch" %>
-      Current Working Here
-    <% end %>
   </div>
 
   <div class="form-group">

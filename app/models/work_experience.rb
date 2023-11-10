@@ -64,5 +64,4 @@ class WorkExperience < ApplicationRecord
     ((last_date.year - start_date.year) * 12  + last_date.month - start_date.month - ( last_date.day >= start_date.day ? 0 : 1)).round
   end
 
-
 end
